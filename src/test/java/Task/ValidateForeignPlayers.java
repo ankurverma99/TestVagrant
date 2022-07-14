@@ -1,26 +1,24 @@
 package Task;
 
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
 
-import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class ValidateForeignPlayers {
+import Genric.BaseClass;
+import Genric.GetJsonValue;
+
+public class ValidateForeignPlayers extends BaseClass {
 	@Test
 	public void validateForeignPlayersTest() throws FileNotFoundException, IOException, ParseException {
 		int ForeignPlayersCount = 0;
-		JSONParser jsonparser = new JSONParser();
-		JSONObject jsonobj = (JSONObject) jsonparser.parse(new FileReader("./TeamRCB.json"));
-		JSONArray jsonArr = (JSONArray) jsonobj.get("player");
+		jsonArr = GetJsonValue.getJsonObjectArray(jsonobj, "player");
 		for (int i = 0; i < jsonArr.size(); i++) {
 			JSONObject player = (JSONObject) jsonArr.get(i);
-			String country = (String) player.get("country");
+			String country = GetJsonValue.getJsonObjectValue(player, "country");
 			if (!country.equalsIgnoreCase("India"))
 				ForeignPlayersCount++;
 		}

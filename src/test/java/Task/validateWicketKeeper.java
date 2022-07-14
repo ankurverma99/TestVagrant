@@ -1,27 +1,27 @@
 package Task;
 
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class validateWicketKeeper {
+import Genric.BaseClass;
+import Genric.GetJsonValue;
+
+public class validateWicketKeeper extends BaseClass {
 	@Test
 	public void ValidateWicketKeeperTest() throws FileNotFoundException, IOException, ParseException {
 		int wicketKeeperCount = 0;
-		JSONParser jsonparser = new JSONParser();
-		JSONObject jsonobj = (JSONObject) jsonparser.parse(new FileReader("./TeamRCB.json"));
+		jsonArr = GetJsonValue.getJsonObjectArray(jsonobj, "player");
 		JSONArray jsonArr = (JSONArray) jsonobj.get("player");
 		for (int i = 0; i < jsonArr.size(); i++) {
 			JSONObject player = (JSONObject) jsonArr.get(i);
-			String country = (String) player.get("role");
-			if (country.equalsIgnoreCase("Wicket-keeper"))
+			String role = GetJsonValue.getJsonObjectValue(player, "role");
+			if (role.equalsIgnoreCase("Wicket-keeper"))
 				wicketKeeperCount++;
 		}
 		// Assert.assertEquals(wicketKeeperCount, 1);
