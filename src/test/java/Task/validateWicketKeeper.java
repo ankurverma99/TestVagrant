@@ -8,6 +8,7 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class validateWicketKeeper {
@@ -23,10 +24,14 @@ public class validateWicketKeeper {
 			if (country.equalsIgnoreCase("Wicket-keeper"))
 				wicketKeeperCount++;
 		}
-		if (wicketKeeperCount == 1)
+		// Assert.assertEquals(wicketKeeperCount, 1);
+
+		if (wicketKeeperCount == 1) {
 			System.out.println("Team has " + wicketKeeperCount + " wicket Keeper");
-		else
+		} else {
 			System.out.println("Team is not have wicket Keeper");
+			Assert.fail();
+		}
 
 	}
 

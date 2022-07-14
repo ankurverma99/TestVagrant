@@ -8,6 +8,7 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class ValidateForeignPlayers {
@@ -23,10 +24,13 @@ public class ValidateForeignPlayers {
 			if (!country.equalsIgnoreCase("India"))
 				ForeignPlayersCount++;
 		}
-		if (ForeignPlayersCount >= 4)
+		// Assert.assertEquals(ForeignPlayersCount, 4);
+		if (ForeignPlayersCount >= 4) {
 			System.out.println("Team has only " + ForeignPlayersCount + " Foreign Players");
-		else
+		} else {
 			System.out.println("Team is not having 4 Foreign Players");
+			Assert.fail();
+		}
 
 	}
 
