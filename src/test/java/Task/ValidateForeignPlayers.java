@@ -6,6 +6,7 @@ import java.io.IOException;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.ParseException;
 import org.testng.Assert;
+import org.testng.Reporter;
 import org.testng.annotations.Test;
 
 import Genric.BaseClass;
@@ -24,9 +25,9 @@ public class ValidateForeignPlayers extends BaseClass {
 		}
 		// Assert.assertEquals(ForeignPlayersCount, 4);
 		if (ForeignPlayersCount >= 4) {
-			System.out.println("Team has only " + ForeignPlayersCount + " Foreign Players");
+			Reporter.log("Team has only " + ForeignPlayersCount + " Foreign Players", true);
 		} else {
-			System.out.println("Team is not having 4 Foreign Players");
+			Reporter.log("Team is not having 4 Foreign Players");
 			Assert.fail();
 		}
 

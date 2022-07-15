@@ -7,6 +7,7 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.ParseException;
 import org.testng.Assert;
+import org.testng.Reporter;
 import org.testng.annotations.Test;
 
 import Genric.BaseClass;
@@ -26,10 +27,10 @@ public class validateWicketKeeper extends BaseClass {
 		}
 		// Assert.assertEquals(wicketKeeperCount, 1);
 
-		if (wicketKeeperCount == 1) {
-			System.out.println("Team has " + wicketKeeperCount + " wicket Keeper");
+		if (wicketKeeperCount >= 1) {
+			Reporter.log("Team has " + wicketKeeperCount + " wicket Keeper", true);
 		} else {
-			System.out.println("Team is not have wicket Keeper");
+			Reporter.log("Team is not have wicket Keeper", true);
 			Assert.fail();
 		}
 
